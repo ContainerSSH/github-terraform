@@ -17,7 +17,6 @@ resource "github_repository" "library" {
       template,
       has_downloads
     ]
-    prevent_destroy = true
   }
 
   for_each = local.libraries
