@@ -12,6 +12,7 @@ locals {
     "sanjabonic"
   ]
   libraries = {
+    "http": "Common HTTP library for ContainerSSH",
     "auth": "ContainerSSH authentication library",
     "github-terraform": "Terraform repository for managing this GitHub organization"
     "sshserver": "The SSH server and decoding library used by ContainerSSH",
