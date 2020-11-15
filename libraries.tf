@@ -8,6 +8,11 @@ resource "github_repository" "library" {
   vulnerability_alerts = true
   default_branch = "main"
   homepage_url = "https://containerssh.github.io/"
+
+  allow_merge_commit = false
+  allow_squash_merge = true
+  allow_rebase_merge = false
+
   template {
     owner = "ContainerSSH"
     repository = "library-template"
