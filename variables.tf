@@ -13,7 +13,7 @@ locals {
   ]
   libraries = {
     "geoip": "The GeoIP lookup library for ContainerSSH",
-    "logintegration:" "The logging integration library for ContainerSSH",
+    "logintegration": "The logging integration library for ContainerSSH",
     "dockerrun": "The Docker backend for ContainerSSH",
     "kuberun:" "The Kubernetes backend for ContainerSSH",
     "backend": "Container backend abstraction library for ContainerSSH",
