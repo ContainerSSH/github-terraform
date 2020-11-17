@@ -12,6 +12,7 @@ locals {
     "sanjabonic"
   ]
   libraries = {
+    "configuration": "Common configuration library for ContainerSSH",
     "http": "Common HTTP library for ContainerSSH",
     "auth": "ContainerSSH authentication library",
     "authintegration": "SSH server integration of the auth library"
