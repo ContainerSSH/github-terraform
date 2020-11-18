@@ -12,6 +12,7 @@ locals {
     "sanjabonic"
   ]
   libraries = {
+    "service": "Service layer for ContainerSSH",
     "geoip": "The GeoIP lookup library for ContainerSSH",
     "logintegration": "The logging integration library for ContainerSSH",
     "dockerrun": "The Docker backend for ContainerSSH",
