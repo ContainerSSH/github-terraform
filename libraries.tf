@@ -13,6 +13,11 @@ resource "github_repository" "library" {
   allow_squash_merge = true
   allow_rebase_merge = false
 
+  topics = [
+    "library",
+    "containerssh",
+  ]
+
   template {
     owner = "ContainerSSH"
     repository = "library-template"
@@ -20,13 +25,15 @@ resource "github_repository" "library" {
   lifecycle {
     ignore_changes = [
       template,
-      has_downloads
+      has_downloads,
+      topics,
     ]
   }
 
   for_each = local.libraries
 }
 
+//noinspection MissingProperty
 resource "github_branch_protection" "library" {
   repository_id = each.value.node_id
   pattern = "main"
