@@ -20,6 +20,7 @@ locals {
     "kuberun": "The Kubernetes backend for ContainerSSH",
     "backend": "Container backend abstraction library for ContainerSSH",
     "metrics": "Metrics collection and server library for ContainerSSH",
+    "metricsintegration": "Integration for the Metrics library for ContainerSSH",
     "configuration": "Common configuration library for ContainerSSH",
     "http": "Common HTTP library for ContainerSSH",
     "auth": "ContainerSSH authentication library",
