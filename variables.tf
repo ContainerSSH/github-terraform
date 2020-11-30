@@ -18,6 +18,7 @@ locals {
     "logintegration": "The logging integration library for ContainerSSH",
     "dockerrun": "The Docker backend for ContainerSSH",
     "kuberun": "The Kubernetes backend for ContainerSSH",
+    "podman": "The Podman backend for ContainerSSH",
     "backend": "Container backend abstraction library for ContainerSSH",
     "metrics": "Metrics collection and server library for ContainerSSH",
     "metricsintegration": "Integration for the Metrics library for ContainerSSH",
