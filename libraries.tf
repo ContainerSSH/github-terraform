@@ -39,6 +39,14 @@ resource "github_branch_protection" "library" {
   pattern = "main"
   enforce_admins = true
   require_signed_commits = true
+  required_status_checks {
+    strict = true
+    contexts = [
+      "CodeQL",
+      "Run lint",
+      "Run tests",
+    ]
+  }
   for_each = github_repository.library
 }
 
