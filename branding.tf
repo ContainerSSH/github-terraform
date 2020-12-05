@@ -31,7 +31,7 @@ resource "github_repository" "branding" {
 
 //noinspection MissingProperty
 resource "github_branch_protection" "branding" {
-  repository_id          = github_repository.branding.id
+  repository_id          = github_repository.branding.node_id
   pattern                = "main"
   enforce_admins         = true
   require_signed_commits = true

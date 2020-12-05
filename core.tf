@@ -33,7 +33,7 @@ resource "github_repository" "core" {
 
 //noinspection MissingProperty
 resource "github_branch_protection" "core" {
-  repository_id          = github_repository.core.id
+  repository_id          = github_repository.core.node_id
   pattern                = "stable"
   enforce_admins         = true
   require_signed_commits = true

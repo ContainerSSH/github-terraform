@@ -31,7 +31,7 @@ resource "github_repository" "website" {
 
 //noinspection MissingProperty
 resource "github_branch_protection" "website" {
-  repository_id          = github_repository.website.id
+  repository_id          = github_repository.website.node_id
   pattern                = "main"
   enforce_admins         = true
   require_signed_commits = true

@@ -31,7 +31,7 @@ resource "github_repository" "tf" {
 
 //noinspection MissingProperty
 resource "github_branch_protection" "tf" {
-  repository_id          = github_repository.tf.id
+  repository_id          = github_repository.tf.node_id
   pattern                = "main"
   enforce_admins         = true
   require_signed_commits = true
