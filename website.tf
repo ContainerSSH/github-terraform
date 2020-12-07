@@ -33,7 +33,7 @@ resource "github_repository" "website" {
 resource "github_branch_protection" "website" {
   repository_id          = github_repository.website.node_id
   pattern                = "main"
-  enforce_admins         = true
+  enforce_admins         = false
   require_signed_commits = true
   required_status_checks {
     strict = true
