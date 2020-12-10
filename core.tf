@@ -35,7 +35,7 @@ resource "github_repository" "core" {
 resource "github_branch_protection" "core" {
   repository_id          = github_repository.core.node_id
   pattern                = "stable"
-  enforce_admins         = true
+  enforce_admins         = false
   require_signed_commits = true
   required_pull_request_reviews {
     dismiss_stale_reviews           = true

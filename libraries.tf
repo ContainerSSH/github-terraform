@@ -39,7 +39,7 @@ resource "github_repository" "library" {
 resource "github_branch_protection" "library" {
   repository_id          = each.value.node_id
   pattern                = "main"
-  enforce_admins         = true
+  enforce_admins         = false
   require_signed_commits = true
   required_pull_request_reviews {
     dismiss_stale_reviews           = true

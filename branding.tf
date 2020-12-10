@@ -35,7 +35,7 @@ resource "github_repository" "branding" {
 resource "github_branch_protection" "branding" {
   repository_id          = github_repository.branding.node_id
   pattern                = "main"
-  enforce_admins         = true
+  enforce_admins         = false
   require_signed_commits = true
   required_pull_request_reviews {
     dismiss_stale_reviews           = true

@@ -40,8 +40,12 @@ resource "github_repository" "authconfig" {
 resource "github_branch_protection" "authconfig" {
   repository_id          = github_repository.authconfig.node_id
   pattern                = "main"
-  enforce_admins         = true
+  enforce_admins         = false
   require_signed_commits = true
+  required_pull_request_reviews {
+    dismiss_stale_reviews           = true
+    required_approving_review_count = 1
+  }
   required_status_checks {
     strict = true
     contexts = [
