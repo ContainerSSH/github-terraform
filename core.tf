@@ -1,13 +1,13 @@
 resource "github_repository" "core" {
-  name = "ContainerSSH"
-  description = "ContainerSSH: Launch containers on demand"
-  has_issues = true
-  has_projects = false
-  has_wiki = false
-  has_downloads = true
+  name                 = "ContainerSSH"
+  description          = "ContainerSSH: Launch containers on demand"
+  has_issues           = true
+  has_projects         = false
+  has_wiki             = false
+  has_downloads        = true
   vulnerability_alerts = true
-  default_branch = "stable"
-  homepage_url = "https://containerssh.github.io/"
+  default_branch       = "stable"
+  homepage_url         = "https://containerssh.github.io/"
 
   allow_merge_commit = false
   allow_squash_merge = true
@@ -37,6 +37,10 @@ resource "github_branch_protection" "core" {
   pattern                = "stable"
   enforce_admins         = true
   require_signed_commits = true
+  required_pull_request_reviews {
+    dismiss_stale_reviews           = true
+    required_approving_review_count = 1
+  }
   required_status_checks {
     strict = true
     contexts = [

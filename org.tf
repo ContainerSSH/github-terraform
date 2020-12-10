@@ -3,3 +3,4 @@ resource "github_membership" "membership" {
   role     = "admin"
   count    = length(local.members)
 }
+

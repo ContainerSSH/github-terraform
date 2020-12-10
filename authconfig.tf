@@ -1,17 +1,19 @@
 resource "github_repository" "authconfig" {
-  name = "AuthConfig"
-  description = "The Authentication and Configuration Server for ContainerSSH"
-  has_issues = true
-  has_projects = false
-  has_wiki = false
-  has_downloads = true
+  name                 = "AuthConfig"
+  description          = "The Authentication and Configuration Server for ContainerSSH"
+  has_issues           = true
+  has_projects         = false
+  has_wiki             = false
+  has_downloads        = true
   vulnerability_alerts = true
-  default_branch = "main"
-  homepage_url = "https://containerssh.github.io/"
+  default_branch       = "main"
+  homepage_url         = "https://containerssh.github.io/"
 
   allow_merge_commit = false
   allow_squash_merge = true
   allow_rebase_merge = false
+
+  delete_branch_on_merge = true
 
   topics = [
     "docker",
