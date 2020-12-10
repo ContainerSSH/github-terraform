@@ -1,13 +1,13 @@
 resource "github_repository" "tf" {
-  name = "github-terraform"
-  description = "Terraform repository for managing this GitHub organization"
-  has_issues = true
-  has_projects = false
-  has_wiki = false
-  has_downloads = false
+  name                 = "github-terraform"
+  description          = "Terraform repository for managing this GitHub organization"
+  has_issues           = true
+  has_projects         = false
+  has_wiki             = false
+  has_downloads        = false
   vulnerability_alerts = true
-  default_branch = "main"
-  homepage_url = "https://containerssh.github.io/"
+  default_branch       = "main"
+  homepage_url         = "https://containerssh.github.io/"
 
   allow_merge_commit = false
   allow_squash_merge = true
@@ -35,6 +35,10 @@ resource "github_branch_protection" "tf" {
   pattern                = "main"
   enforce_admins         = true
   require_signed_commits = true
+  required_pull_request_reviews {
+    dismiss_stale_reviews           = true
+    required_approving_review_count = 1
+  }
   required_status_checks {
     strict = true
     contexts = [
