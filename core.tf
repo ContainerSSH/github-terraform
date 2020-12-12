@@ -13,6 +13,8 @@ resource "github_repository" "core" {
   allow_squash_merge = true
   allow_rebase_merge = false
 
+  delete_branch_on_merge = true
+
   topics = [
     "docker",
     "kubernetes",
