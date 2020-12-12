@@ -64,3 +64,9 @@ resource "github_actions_secret" "guest-image-docker-password" {
   secret_name      = "DOCKER_PASSWORD"
   plaintext_value  = var.docker_password
 }
+
+resource "github_actions_secret" "guest-image-github-username" {
+  repository       = github_repository.guest-image.name
+  secret_name      = "GH_USERNAME"
+  plaintext_value  = var.organization
+}
