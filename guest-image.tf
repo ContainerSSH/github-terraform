@@ -52,3 +52,15 @@ resource "github_branch_protection" "guest-image" {
     ]
   }
 }
+
+resource "github_actions_secret" "guest-image-docker-username" {
+  repository       = github_repository.guest-image.name
+  secret_name      = "DOCKER_USER"
+  plaintext_value  = var.docker_username
+}
+
+resource "github_actions_secret" "guest-image-docker-password" {
+  repository       = github_repository.guest-image.name
+  secret_name      = "DOCKER_PASSWORD"
+  plaintext_value  = var.docker_password
+}

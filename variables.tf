@@ -3,7 +3,15 @@ variable "organization" {
 }
 
 variable "token" {
+  description = "GitHub access token"
+}
 
+variable "docker_username" {
+  description = "Docker Hub username"
+}
+
+variable "docker_password" {
+  description = "Docker Hub password"
 }
 
 locals {
