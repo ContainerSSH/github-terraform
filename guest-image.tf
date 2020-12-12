@@ -55,7 +55,7 @@ resource "github_branch_protection" "guest-image" {
 
 resource "github_actions_secret" "guest-image-docker-username" {
   repository       = github_repository.guest-image.name
-  secret_name      = "DOCKER_USER"
+  secret_name      = "DOCKER_USERNAME"
   plaintext_value  = var.docker_username
 }
 
