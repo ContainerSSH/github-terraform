@@ -7,7 +7,7 @@ resource "github_repository" "core" {
   has_downloads        = true
   vulnerability_alerts = true
   default_branch       = "stable"
-  homepage_url         = "https://containerssh.github.io/"
+  homepage_url         = "https://containerssh.io/"
 
   allow_merge_commit = false
   allow_squash_merge = true
