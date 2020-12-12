@@ -46,9 +46,7 @@ resource "github_branch_protection" "guest-image" {
   required_status_checks {
     strict = true
     contexts = [
-      "CodeQL",
-      "Run lint",
-      "Run tests",
+      "Build",
     ]
   }
 }
