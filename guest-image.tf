@@ -65,8 +65,21 @@ resource "github_actions_secret" "guest-image-docker-password" {
   plaintext_value  = var.docker_password
 }
 
+resource "github_actions_secret" "guest-image-quay-username" {
+  repository       = github_repository.guest-image.name
+  secret_name      = "QUAY_USERNAME"
+  plaintext_value  = var.quay_username
+}
+
+resource "github_actions_secret" "guest-image-quay-password" {
+  repository       = github_repository.guest-image.name
+  secret_name      = "QUAY_PASSWORD"
+  plaintext_value  = var.quay_password
+}
+
 resource "github_actions_secret" "guest-image-github-username" {
   repository       = github_repository.guest-image.name
   secret_name      = "GH_USERNAME"
   plaintext_value  = var.organization
 }
+

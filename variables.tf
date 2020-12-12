@@ -14,6 +14,14 @@ variable "docker_password" {
   description = "Docker Hub password"
 }
 
+variable "quay_username" {
+  description = "Quay.io username"
+}
+
+variable "quay_password" {
+  description = "Quay.io password"
+}
+
 locals {
   members = [
     "janoszen",
