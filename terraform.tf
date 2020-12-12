@@ -13,6 +13,8 @@ resource "github_repository" "tf" {
   allow_squash_merge = true
   allow_rebase_merge = false
 
+  delete_branch_on_merge = true
+
   topics = [
     "terraform",
     "infrastructure",
