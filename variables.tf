@@ -26,7 +26,7 @@ locals {
     "auditlogintegration" : "Auditlog integration for the SSH server library"
     "log" : "Common logging interface for ContainerSSH modules",
     "auditlog" : "Audit logger for ContainerSSH",
-    "structutils" : "Utilitiy wrapper for structs for ContainerSSH",
+    "structutils" : "Utility wrapper for structs for ContainerSSH",
     "unixutils" : "Utilities related to UNIX systems",
   }
 }
