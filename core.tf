@@ -6,7 +6,7 @@ resource "github_repository" "core" {
   has_wiki             = false
   has_downloads        = true
   vulnerability_alerts = true
-  default_branch       = "stable"
+  default_branch       = "main"
   homepage_url         = "https://containerssh.io/"
 
   allow_merge_commit = false
@@ -36,7 +36,7 @@ resource "github_repository" "core" {
 //noinspection MissingProperty
 resource "github_branch_protection" "core" {
   repository_id          = github_repository.core.node_id
-  pattern                = "stable"
+  pattern                = "main"
   enforce_admins         = false
   require_signed_commits = true
   required_pull_request_reviews {
