@@ -48,7 +48,7 @@ resource "github_branch_protection" "core" {
     contexts = [
       "CodeQL",
       "Run lint",
-      "Run tests",
+      "Build",
     ]
   }
 }

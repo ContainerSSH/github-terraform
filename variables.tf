@@ -30,8 +30,10 @@ locals {
   libraries = {
     "service" : "Service layer for ContainerSSH",
     "geoip" : "The GeoIP lookup library for ContainerSSH",
-    "dockerrun" : "The Docker backend for ContainerSSH",
-    "kuberun" : "The Kubernetes backend for ContainerSSH",
+    "dockerrun" : "The legacy Docker backend for ContainerSSH",
+    "docker" : "The Docker backend for ContainerSSH",
+    "kuberun" : "The legacy Kubernetes backend for ContainerSSH",
+    "kubernetes" : "The Kubernetes backend for ContainerSSH",
     "backend" : "Container backend abstraction library for ContainerSSH",
     "metrics" : "Metrics collection and server library for ContainerSSH",
     "configuration" : "Common configuration library for ContainerSSH",
