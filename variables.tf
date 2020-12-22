@@ -28,6 +28,7 @@ locals {
     "sanjabonic"
   ]
   libraries = {
+    "agent": "The guest agent for ContainerSSH",
     "service" : "Service layer for ContainerSSH",
     "geoip" : "The GeoIP lookup library for ContainerSSH",
     "dockerrun" : "The legacy Docker backend for ContainerSSH",
