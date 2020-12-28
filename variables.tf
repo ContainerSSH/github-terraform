@@ -45,10 +45,15 @@ locals {
     "auth" : "ContainerSSH authentication library",
     "authintegration" : "SSH server integration of the auth library"
     "sshserver" : "The SSH server and decoding library used by ContainerSSH",
+    "security" : "The security layer for ContainerSSH",
     "auditlogintegration" : "Auditlog integration for the SSH server library"
     "log" : "Common logging interface for ContainerSSH modules",
     "auditlog" : "Audit logger for ContainerSSH",
     "structutils" : "Utility wrapper for structs for ContainerSSH",
     "unixutils" : "Utilities related to UNIX systems",
   }
+  archived = [
+    "kuberun",
+    "dockerrun",
+  ]
 }
