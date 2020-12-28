@@ -14,7 +14,7 @@ resource "github_repository" "library" {
   allow_rebase_merge = false
 
   delete_branch_on_merge = true
-  archived = contains(local.libraries, each.key)
+  archived = contains(local.archived, each.key)
   topics = [
     "library",
     "containerssh",
