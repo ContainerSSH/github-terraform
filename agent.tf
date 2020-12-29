@@ -58,3 +58,34 @@ resource "github_actions_secret" "agent" {
   secret_name      = "GPG_KEY"
   plaintext_value  = replace(replace(base64encode(var.gpg_code_signing_key), "\n", ""), "\r", "")
 }
+
+resource "github_actions_secret" "agent-docker-username" {
+  repository       = github_repository.agent.name
+  secret_name      = "DOCKER_USERNAME"
+  plaintext_value  = var.docker_username
+}
+
+resource "github_actions_secret" "agent-docker-password" {
+  repository       = github_repository.agent.name
+  secret_name      = "DOCKER_PASSWORD"
+  plaintext_value  = var.docker_password
+}
+
+resource "github_actions_secret" "agent-quay-username" {
+  repository       = github_repository.agent.name
+  secret_name      = "QUAY_USERNAME"
+  plaintext_value  = var.quay_username
+}
+
+resource "github_actions_secret" "agent-quay-password" {
+  repository       = github_repository.agent.name
+  secret_name      = "QUAY_PASSWORD"
+  plaintext_value  = var.quay_password
+}
+
+resource "github_actions_secret" "agent-github-username" {
+  repository       = github_repository.agent.name
+  secret_name      = "GH_USERNAME"
+  plaintext_value  = var.organization
+}
+
