@@ -48,3 +48,9 @@ resource "github_branch_protection" "packages" {
     contexts = []
   }
 }
+
+resource "github_actions_secret" "packages" {
+  repository       = github_repository.packages.name
+  secret_name      = "GPG_KEY"
+  plaintext_value  = replace(replace(base64encode(var.gpg_code_signing_key), "\n", ""), "\r", "")
+}
