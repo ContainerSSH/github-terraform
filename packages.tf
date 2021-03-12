@@ -4,7 +4,7 @@ resource "github_repository" "packages" {
   has_issues           = true
   has_projects         = false
   has_wiki             = false
-  has_downloads        = true
+  has_downloads        = false
   vulnerability_alerts = true
   default_branch       = "main"
   homepage_url         = "https://containerssh.io/"

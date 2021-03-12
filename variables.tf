@@ -29,7 +29,20 @@ variable "gpg_code_signing_key" {
 locals {
   members = [
     "janoszen",
-    "sanjabonic"
+    "sanjabonic",
+    "ecrazor1911"
+  ]
+  support = [
+    "janoszen"
+  ]
+  developers = [
+    "janoszen",
+    "ecrazor1911"
+  ]
+  website = [
+    "janoszen",
+    "sanjabonic",
+    "ecrazor1911"
   ]
   libraries = {
     "service" : "Service layer for ContainerSSH",
