@@ -48,3 +48,33 @@ resource "github_branch_protection" "images" {
     contexts = []
   }
 }
+
+resource "github_actions_secret" "images-docker-username" {
+  repository       = github_repository.images.name
+  secret_name      = "DOCKER_USERNAME"
+  plaintext_value  = var.docker_username
+}
+
+resource "github_actions_secret" "images-docker-password" {
+  repository       = github_repository.images.name
+  secret_name      = "DOCKER_PASSWORD"
+  plaintext_value  = var.docker_password
+}
+
+resource "github_actions_secret" "images-quay-username" {
+  repository       = github_repository.images.name
+  secret_name      = "QUAY_USERNAME"
+  plaintext_value  = var.quay_username
+}
+
+resource "github_actions_secret" "images-quay-password" {
+  repository       = github_repository.images.name
+  secret_name      = "QUAY_PASSWORD"
+  plaintext_value  = var.quay_password
+}
+
+resource "github_actions_secret" "images-github-username" {
+  repository       = github_repository.images.name
+  secret_name      = "GH_USERNAME"
+  plaintext_value  = var.organization
+}
