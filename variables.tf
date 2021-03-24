@@ -65,6 +65,7 @@ locals {
     "auditlog" : "Audit logger for ContainerSSH",
     "structutils" : "Utility wrapper for structs for ContainerSSH",
     "unixutils" : "Utilities related to UNIX systems",
+    "sshproxy": "SSH proxy backend for ContainerSSH",
   }
   archived = [
     "kuberun",
