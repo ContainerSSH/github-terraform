@@ -48,7 +48,7 @@ resource "github_branch_protection" "agent" {
     contexts = [
       "CodeQL",
       "Run lint",
-      "Build",
+      "Release",
     ]
   }
 }
