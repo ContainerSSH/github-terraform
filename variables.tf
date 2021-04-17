@@ -66,6 +66,7 @@ locals {
     "structutils" : "Utility wrapper for structs for ContainerSSH",
     "unixutils" : "Utilities related to UNIX systems",
     "sshproxy": "SSH proxy backend for ContainerSSH",
+    "client-testbed": "Miniature testbed application for SSH clients",
   }
   archived = [
     "kuberun",
