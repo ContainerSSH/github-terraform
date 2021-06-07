@@ -67,6 +67,7 @@ locals {
     "unixutils" : "Utilities related to UNIX systems",
     "sshproxy": "SSH proxy backend for ContainerSSH",
     "client-testbed": "Miniature testbed application for SSH clients",
+    "health": "Healthz server for ContainerSSH",
   }
   archived = [
     "kuberun",
