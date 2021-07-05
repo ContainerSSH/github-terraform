@@ -30,20 +30,18 @@ locals {
   members = [
     "janoszen",
     "janosdebugs",
-    "sanjabonic",
-    "ecrazor1911"
+    "bencurio"
   ]
   support = [
     "janosdebugs"
   ]
   developers = [
     "janosdebugs",
-    "ecrazor1911"
+    "bencurio"
   ]
   website = [
     "janosdebugs",
-    "sanjabonic",
-    "ecrazor1911"
+    "bencurio"
   ]
   libraries = {
     "service" : "Service layer for ContainerSSH",
