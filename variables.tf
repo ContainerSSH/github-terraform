@@ -29,18 +29,19 @@ variable "gpg_code_signing_key" {
 locals {
   members = [
     "janoszen",
+    "janosdebugs",
     "sanjabonic",
     "ecrazor1911"
   ]
   support = [
-    "janoszen"
+    "janosdebugs"
   ]
   developers = [
-    "janoszen",
+    "janosdebugs",
     "ecrazor1911"
   ]
   website = [
-    "janoszen",
+    "janosdebugs",
     "sanjabonic",
     "ecrazor1911"
   ]
