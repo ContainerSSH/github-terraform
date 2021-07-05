@@ -28,7 +28,7 @@ variable "gpg_code_signing_key" {
 
 locals {
   members = [
-    "janoszen",
+    "sanjacodes",
     "janosdebugs",
     "bencurio"
   ]
