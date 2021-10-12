@@ -30,8 +30,8 @@ locals {
   members = [
     "sanjacodes",
     "janosdebugs",
-    "bencurio"
-    "containersshbuilder",
+    "bencurio",
+    "containersshbuilder"
   ]
   support = [
     "janosdebugs"
