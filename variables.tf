@@ -31,6 +31,7 @@ locals {
     "sanjacodes",
     "janosdebugs",
     "bencurio"
+    "containersshbuilder",
   ]
   support = [
     "janosdebugs"
