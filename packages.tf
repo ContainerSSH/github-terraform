@@ -12,6 +12,7 @@ resource "github_repository" "packages" {
   allow_merge_commit = false
   allow_squash_merge = true
   allow_rebase_merge = false
+  allow_auto_merge   = true
 
   delete_branch_on_merge = true
 
@@ -22,6 +23,14 @@ resource "github_repository" "packages" {
     "devsecops",
     "security",
   ]
+
+  pages {
+    cname = "packages.containerssh.io"
+    source {
+      branch = "gh-pages"
+      path   = "/"
+    }
+  }
 
   lifecycle {
     ignore_changes = [
@@ -49,8 +58,14 @@ resource "github_branch_protection" "packages" {
   }
 }
 
+resource "github_team_repository" "packages" {
+  repository = github_repository.packages.id
+  team_id    = github_team.developers.id
+  permission = "push"
+}
+
 resource "github_actions_secret" "packages" {
-  repository       = github_repository.packages.name
-  secret_name      = "GPG_KEY"
-  plaintext_value  = replace(replace(base64encode(var.gpg_code_signing_key), "\n", ""), "\r", "")
+  repository      = github_repository.packages.name
+  secret_name     = "GPG_KEY"
+  plaintext_value = replace(replace(base64encode(var.gpg_code_signing_key), "\n", ""), "\r", "")
 }

@@ -14,7 +14,7 @@ resource "github_repository" "library" {
   allow_rebase_merge = false
 
   delete_branch_on_merge = true
-  archived = contains(local.archived, each.key)
+  archived               = contains(local.archived, each.key)
   topics = [
     "library",
     "containerssh",
@@ -54,6 +54,13 @@ resource "github_branch_protection" "library" {
     ]
   }
   for_each = github_repository.library
+}
+
+resource "github_team_repository" "library" {
+  repository = each.value.node_id
+  team_id    = github_team.developers.id
+  permission = "push"
+  for_each   = github_repository.library
 }
 
 resource "github_issue_label" "bug" {

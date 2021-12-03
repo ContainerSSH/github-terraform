@@ -12,6 +12,7 @@ resource "github_repository" "website" {
   allow_merge_commit = false
   allow_squash_merge = true
   allow_rebase_merge = false
+  allow_auto_merge   = true
 
   delete_branch_on_merge = true
 
@@ -20,6 +21,14 @@ resource "github_repository" "website" {
     "infrastructure",
     "mkdocs",
   ]
+
+  pages {
+    cname = "containerssh.io"
+    source {
+      branch = "gh-pages"
+      path   = "/"
+    }
+  }
 
   lifecycle {
     ignore_changes = [
@@ -45,4 +54,16 @@ resource "github_branch_protection" "website" {
     strict   = true
     contexts = []
   }
+}
+
+resource "github_team_repository" "website-devs" {
+  repository = github_repository.website.id
+  team_id    = github_team.developers.id
+  permission = "push"
+}
+
+resource "github_team_repository" "website" {
+  repository = github_repository.website.id
+  team_id    = github_team.website.id
+  permission = "push"
 }

@@ -12,6 +12,7 @@ resource "github_repository" "examples" {
   allow_merge_commit = false
   allow_squash_merge = true
   allow_rebase_merge = false
+  allow_auto_merge   = true
 
   delete_branch_on_merge = true
 
@@ -26,6 +27,12 @@ resource "github_repository" "examples" {
       topics,
     ]
   }
+}
+
+resource "github_team_repository" "examples" {
+  repository = github_repository.examples.id
+  team_id    = github_team.developers.id
+  permission = "push"
 }
 
 //noinspection MissingProperty
