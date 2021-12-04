@@ -12,6 +12,7 @@ resource "github_repository" "core" {
   allow_merge_commit = false
   allow_squash_merge = true
   allow_rebase_merge = false
+  allow_auto_merge   = true
 
   delete_branch_on_merge = true
 
@@ -54,13 +55,19 @@ resource "github_branch_protection" "core" {
 }
 
 resource "github_actions_secret" "core" {
-  repository       = github_repository.core.name
-  secret_name      = "GPG_KEY"
-  plaintext_value  = replace(replace(base64encode(var.gpg_code_signing_key), "\n", ""), "\r", "")
+  repository      = github_repository.core.name
+  secret_name     = "GPG_KEY"
+  plaintext_value = replace(replace(base64encode(var.gpg_code_signing_key), "\n", ""), "\r", "")
 }
 
 resource "github_actions_secret" "core-github-username" {
-  repository       = github_repository.core.name
-  secret_name      = "GH_USERNAME"
-  plaintext_value  = var.organization
+  repository      = github_repository.core.name
+  secret_name     = "GH_USERNAME"
+  plaintext_value = var.organization
+}
+
+resource "github_team_repository" "core" {
+  repository = github_repository.core.id
+  team_id    = github_team.developers.id
+  permission = "push"
 }

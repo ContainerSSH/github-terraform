@@ -1,10 +1,10 @@
-resource "github_repository" "tf" {
-  name                 = "github-terraform"
-  description          = "Terraform repository for managing this GitHub organization"
+resource "github_repository" "lib" {
+  name                 = "libcontainerssh"
+  description          = "Embedded ContainerSSH and webhook helper library"
   has_issues           = true
   has_projects         = false
   has_wiki             = false
-  has_downloads        = false
+  has_downloads        = true
   vulnerability_alerts = true
   default_branch       = "main"
   homepage_url         = "https://containerssh.io/"
@@ -16,9 +16,11 @@ resource "github_repository" "tf" {
   delete_branch_on_merge = true
 
   topics = [
-    "terraform",
-    "infrastructure",
-    "containerssh",
+    "docker",
+    "kubernetes",
+    "ssh",
+    "devsecops",
+    "security",
   ]
 
   lifecycle {
@@ -32,8 +34,8 @@ resource "github_repository" "tf" {
 }
 
 //noinspection MissingProperty
-resource "github_branch_protection" "tf" {
-  repository_id          = github_repository.tf.node_id
+resource "github_branch_protection" "lib" {
+  repository_id          = github_repository.lib.node_id
   pattern                = "main"
   enforce_admins         = false
   require_signed_commits = true
@@ -44,13 +46,14 @@ resource "github_branch_protection" "tf" {
   required_status_checks {
     strict = true
     contexts = [
-      "Terraform Cloud/ContainerSSH/github-terraform",
+      "golangci-lint",
+      "go test",
     ]
   }
 }
 
-resource "github_team_repository" "tf" {
-  repository = github_repository.tf.id
+resource "github_team_repository" "lib" {
+  repository = github_repository.lib.id
   team_id    = github_team.developers.id
   permission = "push"
 }

@@ -27,19 +27,34 @@ variable "gpg_code_signing_key" {
 }
 
 locals {
+  # The following users are core developers.
   members = [
     "sanjacodes",
     "janosdebugs",
     "bencurio",
+    "containersshbuilder",
+    "tsipinakis"
+  ]
+  # The following users have admin permissions.
+  admins = [
+    "sanjacodes",
+    "janosdebugs",
+    "bencurio",
+    # containersshbuilder is a machine user used to execute Terraform code. This allows programmatic creation of
+    # repositories and automated permission management.
     "containersshbuilder"
   ]
+  # The following users should be assigned to support requests.
   support = [
     "janosdebugs"
   ]
+  # The following users should have push permissions to all repositories.
   developers = [
     "janosdebugs",
-    "bencurio"
+    "bencurio",
+    "tsipinakis"
   ]
+  # The following users should be able to edit the website.
   website = [
     "janosdebugs",
     "bencurio"
@@ -65,10 +80,10 @@ locals {
     "auditlog" : "Audit logger for ContainerSSH",
     "structutils" : "Utility wrapper for structs for ContainerSSH",
     "unixutils" : "Utilities related to UNIX systems",
-    "sshproxy": "SSH proxy backend for ContainerSSH",
-    "client-testbed": "Miniature testbed application for SSH clients",
-    "health": "Healthz server for ContainerSSH",
-    "test": "Test helpers for ContainerSSH",
+    "sshproxy" : "SSH proxy backend for ContainerSSH",
+    "client-testbed" : "Miniature testbed application for SSH clients",
+    "health" : "Healthz server for ContainerSSH",
+    "test" : "Test helpers for ContainerSSH",
   }
   archived = [
     "kuberun",

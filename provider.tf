@@ -1,6 +1,21 @@
+terraform {
+  backend "remote" {
+    organization = "ContainerSSH"
+
+    workspaces {
+      name = "github-terraform"
+    }
+  }
+  required_providers {
+    github = {
+      source  = "integrations/github"
+      version = "~> 4.0"
+    }
+  }
+}
+
 provider "github" {
-  version      = "3.1.0"
-  token        = var.token
-  organization = var.organization
+  token = var.token
+  owner = var.organization
 }
 

@@ -12,6 +12,7 @@ resource "github_repository" "branding" {
   allow_merge_commit = false
   allow_squash_merge = true
   allow_rebase_merge = false
+  allow_auto_merge   = true
 
   delete_branch_on_merge = true
 
@@ -29,6 +30,18 @@ resource "github_repository" "branding" {
       topics,
     ]
   }
+}
+
+resource "github_team_repository" "branding-devs" {
+  repository = github_repository.branding.id
+  team_id    = github_team.developers.id
+  permission = "push"
+}
+
+resource "github_team_repository" "branding" {
+  repository = github_repository.branding.id
+  team_id    = github_team.website.id
+  permission = "push"
 }
 
 //noinspection MissingProperty

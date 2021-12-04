@@ -12,6 +12,7 @@ resource "github_repository" "authconfig" {
   allow_merge_commit = false
   allow_squash_merge = true
   allow_rebase_merge = false
+  allow_auto_merge   = true
 
   delete_branch_on_merge = true
 
@@ -34,6 +35,12 @@ resource "github_repository" "authconfig" {
     ]
     prevent_destroy = true
   }
+}
+
+resource "github_team_repository" "authconfig" {
+  repository = github_repository.authconfig.id
+  team_id    = github_team.developers.id
+  permission = "push"
 }
 
 //noinspection MissingProperty
