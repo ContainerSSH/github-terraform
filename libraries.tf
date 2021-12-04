@@ -57,7 +57,7 @@ resource "github_branch_protection" "library" {
 }
 
 resource "github_team_repository" "library" {
-  repository = each.value.node_id
+  repository = each.value.id
   team_id    = github_team.developers.id
   permission = "push"
   for_each   = github_repository.library
