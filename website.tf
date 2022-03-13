@@ -45,7 +45,7 @@ resource "github_branch_protection" "website" {
   repository_id          = github_repository.website.node_id
   pattern                = "main"
   enforce_admins         = false
-  require_signed_commits = true
+  require_signed_commits = false
   required_pull_request_reviews {
     dismiss_stale_reviews           = true
     required_approving_review_count = 1
