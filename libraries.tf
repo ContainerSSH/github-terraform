@@ -11,7 +11,7 @@ resource "github_repository" "library" {
 
   allow_merge_commit = false
   allow_squash_merge = true
-  allow_rebase_merge = false
+  allow_rebase_merge = true
 
   delete_branch_on_merge = true
   archived               = contains(local.archived, each.key)
