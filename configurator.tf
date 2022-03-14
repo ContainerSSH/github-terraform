@@ -16,6 +16,14 @@ resource "github_repository" "configurator" {
 
   delete_branch_on_merge = true
 
+  pages {
+    cname = "configurator.containerssh.io"
+    source {
+      branch = "gh-pages"
+      path   = "/"
+    }
+  }
+
   topics = [
     "docker",
     "kubernetes",
