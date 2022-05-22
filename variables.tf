@@ -33,8 +33,7 @@ locals {
     "janosdebugs",
     "bencurio",
     "containersshbuilder",
-    "tsipinakis",
-    "peterclauterbach"
+    "tsipinakis"
   ]
   # The following users have admin permissions.
   admins = [
@@ -58,8 +57,7 @@ locals {
   # The following users should be able to edit the website.
   website = [
     "janosdebugs",
-    "bencurio",
-    "peterclauterbach"
+    "bencurio"
   ]
   libraries = {
     "service" : "Service layer for ContainerSSH",
