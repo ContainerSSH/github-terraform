@@ -34,6 +34,7 @@ resource "github_repository" "go" {
       template,
       has_downloads,
       topics,
+      pages,
     ]
     prevent_destroy = true
   }
