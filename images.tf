@@ -34,6 +34,12 @@ resource "github_repository" "images" {
   }
 }
 
+resource "github_team_repository" "images" {
+  repository = github_repository.images.name
+  team_id    = github_team.chairs.id
+  permission = "admin"
+}
+
 //noinspection MissingProperty
 resource "github_branch_protection" "images" {
   repository_id          = github_repository.images.node_id

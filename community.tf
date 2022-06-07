@@ -32,6 +32,12 @@ resource "github_repository" "community" {
   }
 }
 
+resource "github_team_repository" "community" {
+  repository = github_repository.community.name
+  team_id    = github_team.chairs.id
+  permission = "admin"
+}
+
 resource "github_branch_protection" "community" {
   repository_id          = github_repository.community.node_id
   pattern                = "main"
@@ -83,6 +89,12 @@ resource "github_repository" "github" {
     ]
     prevent_destroy = true
   }
+}
+
+resource "github_team_repository" "github" {
+  repository = github_repository.github.name
+  team_id    = github_team.chairs.id
+  permission = "admin"
 }
 
 resource "github_branch_protection" "github" {

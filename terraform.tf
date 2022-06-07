@@ -31,6 +31,12 @@ resource "github_repository" "tf" {
   }
 }
 
+resource "github_team_repository" "tf" {
+  repository = github_repository.tf.name
+  team_id    = github_team.chairs.id
+  permission = "admin"
+}
+
 //noinspection MissingProperty
 resource "github_branch_protection" "tf" {
   repository_id          = github_repository.tf.node_id

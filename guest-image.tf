@@ -34,6 +34,12 @@ resource "github_repository" "guest-image" {
   }
 }
 
+resource "github_team_repository" "guest-image" {
+  repository = github_repository.guest-image.name
+  team_id    = github_team.chairs.id
+  permission = "admin"
+}
+
 //noinspection MissingProperty
 resource "github_branch_protection" "guest-image" {
   repository_id          = github_repository.guest-image.node_id

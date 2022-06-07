@@ -34,6 +34,12 @@ resource "github_repository" "agent" {
   }
 }
 
+resource "github_team_repository" "agent" {
+  repository = github_repository.agent.name
+  team_id    = github_team.chairs.id
+  permission = "admin"
+}
+
 //noinspection MissingProperty
 resource "github_branch_protection" "agent" {
   repository_id          = github_repository.agent.node_id

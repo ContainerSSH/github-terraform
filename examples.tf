@@ -29,6 +29,12 @@ resource "github_repository" "examples" {
   }
 }
 
+resource "github_team_repository" "examples" {
+  repository = github_repository.examples.name
+  team_id    = github_team.chairs.id
+  permission = "admin"
+}
+
 //noinspection MissingProperty
 resource "github_branch_protection" "examples" {
   repository_id          = github_repository.examples.node_id
