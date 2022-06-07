@@ -33,6 +33,12 @@ resource "github_repository" "lib" {
   }
 }
 
+resource "github_team_repository" "lib" {
+  repository = github_repository.lib.name
+  team_id    = github_team.chairs.id
+  permission = "admin"
+}
+
 //noinspection MissingProperty
 resource "github_branch_protection" "lib" {
   repository_id          = github_repository.lib.node_id

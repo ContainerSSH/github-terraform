@@ -40,6 +40,12 @@ resource "github_repository" "website" {
   }
 }
 
+resource "github_team_repository" "website" {
+  repository = github_repository.website.name
+  team_id    = github_team.chairs.id
+  permission = "admin"
+}
+
 //noinspection MissingProperty
 resource "github_branch_protection" "website" {
   repository_id          = github_repository.website.node_id

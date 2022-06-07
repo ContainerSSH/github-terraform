@@ -42,6 +42,12 @@ resource "github_repository" "configurator" {
   }
 }
 
+resource "github_team_repository" "configurator" {
+  repository = github_repository.configurator.name
+  team_id    = github_team.chairs.id
+  permission = "admin"
+}
+
 //noinspection MissingProperty
 resource "github_branch_protection" "configurator" {
   repository_id          = github_repository.configurator.node_id

@@ -34,6 +34,12 @@ resource "github_repository" "core" {
   }
 }
 
+resource "github_team_repository" "core" {
+  repository = github_repository.core.name
+  team_id    = github_team.chairs.id
+  permission = "admin"
+}
+
 //noinspection MissingProperty
 resource "github_branch_protection" "core" {
   repository_id          = github_repository.core.node_id

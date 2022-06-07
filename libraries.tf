@@ -35,6 +35,14 @@ resource "github_repository" "library" {
   for_each = local.libraries
 }
 
+resource "github_team_repository" "library" {
+  repository = each.key
+  team_id    = github_team.chairs.id
+  permission = "admin"
+  depends_on = [github_repository.library]
+  for_each   = local.libraries
+}
+
 //noinspection MissingProperty
 resource "github_branch_protection" "library" {
   repository_id          = each.value.node_id

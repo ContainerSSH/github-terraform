@@ -32,6 +32,12 @@ resource "github_repository" "branding" {
   }
 }
 
+resource "github_team_repository" "branding" {
+  repository = github_repository.branding.name
+  team_id    = github_team.chairs.id
+  permission = "admin"
+}
+
 //noinspection MissingProperty
 resource "github_branch_protection" "branding" {
   repository_id          = github_repository.branding.node_id

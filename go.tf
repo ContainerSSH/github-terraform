@@ -40,6 +40,12 @@ resource "github_repository" "go" {
   }
 }
 
+resource "github_team_repository" "go" {
+  repository = github_repository.go.name
+  team_id    = github_team.chairs.id
+  permission = "admin"
+}
+
 //noinspection MissingProperty
 resource "github_branch_protection" "go" {
   repository_id          = github_repository.go.node_id

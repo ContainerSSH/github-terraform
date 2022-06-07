@@ -42,6 +42,12 @@ resource "github_repository" "packages" {
   }
 }
 
+resource "github_team_repository" "packages" {
+  repository = github_repository.packages.name
+  team_id    = github_team.chairs.id
+  permission = "admin"
+}
+
 //noinspection MissingProperty
 resource "github_branch_protection" "packages" {
   repository_id          = github_repository.packages.node_id
