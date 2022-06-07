@@ -42,12 +42,6 @@ resource "github_repository" "configurator" {
   }
 }
 
-resource "github_team_repository" "configurator" {
-  repository = github_repository.configurator.id
-  team_id    = github_team.developers.id
-  permission = "push"
-}
-
 //noinspection MissingProperty
 resource "github_branch_protection" "configurator" {
   repository_id          = github_repository.configurator.node_id
@@ -66,4 +60,8 @@ resource "github_branch_protection" "configurator" {
       "Release",
     ]
   }
+  push_restrictions = [
+    github_team.chairs.node_id,
+    github_team.bots.node_id,
+  ]
 }

@@ -54,11 +54,8 @@ resource "github_branch_protection" "go" {
     strict   = true
     contexts = []
   }
+  push_restrictions = [
+    github_team.chairs.node_id,
+    github_team.bots.node_id,
+  ]
 }
-
-resource "github_team_repository" "go-devs" {
-  repository = github_repository.go.id
-  team_id    = github_team.developers.id
-  permission = "push"
-}
-

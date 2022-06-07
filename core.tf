@@ -52,6 +52,10 @@ resource "github_branch_protection" "core" {
       "Build",
     ]
   }
+  push_restrictions = [
+    github_team.chairs.node_id,
+    github_team.bots.node_id,
+  ]
 }
 
 resource "github_actions_secret" "core" {
@@ -64,10 +68,4 @@ resource "github_actions_secret" "core-github-username" {
   repository      = github_repository.core.name
   secret_name     = "GH_USERNAME"
   plaintext_value = var.organization
-}
-
-resource "github_team_repository" "core" {
-  repository = github_repository.core.id
-  team_id    = github_team.developers.id
-  permission = "push"
 }

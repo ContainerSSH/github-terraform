@@ -53,14 +53,11 @@ resource "github_branch_protection" "library" {
       "Run tests",
     ]
   }
+  push_restrictions = [
+    github_team.chairs.node_id,
+    github_team.bots.node_id,
+  ]
   for_each = github_repository.library
-}
-
-resource "github_team_repository" "library" {
-  repository = each.value.id
-  team_id    = github_team.developers.id
-  permission = "push"
-  for_each   = github_repository.library
 }
 
 resource "github_issue_label" "bug" {

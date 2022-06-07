@@ -4,41 +4,44 @@ resource "github_membership" "membership" {
   count    = length(local.admins)
 }
 
-resource "github_team" "support" {
-  name        = "support"
-  description = "The ContainerSSH Support Team"
+resource "github_membership" "members" {
+  username = element(local.members, count.index)
+  role     = "member"
+  count    = length(local.members)
+}
+
+resource "github_team" "bots" {
+  name        = "chairs"
+  description = "The ContainerSSH bots"
+  privacy     = "secret"
+}
+
+resource "github_team" "chairs" {
+  name        = "chairs"
+  description = "The ContainerSSH project chairs"
   privacy     = "closed"
 }
 
-resource "github_team" "developers" {
-  name        = "developers"
-  description = "The ContainerSSH Dev Team"
-  privacy     = "closed"
+resource "github_team_members" "chairs" {
+  team_id  = github_team.chairs.id
+
+  dynamic "members" {
+    for_each = local.chairs
+    content {
+      username = members.value
+      role     = "maintainer"
+    }
+  }
 }
 
-resource "github_team" "website" {
-  name        = "website"
-  description = "The ContainerSSH Website Team"
-  privacy     = "closed"
-}
+resource "github_team_members" "bots" {
+  team_id  = github_team.bots.id
 
-resource "github_team_membership" "support" {
-  team_id  = github_team.support.id
-  username = element(local.support, count.index)
-  role     = "member"
-  count    = length(local.support)
-}
-
-resource "github_team_membership" "developers" {
-  team_id  = github_team.developers.id
-  username = element(local.developers, count.index)
-  role     = "member"
-  count    = length(local.developers)
-}
-
-resource "github_team_membership" "website" {
-  team_id  = github_team.website.id
-  username = element(local.website, count.index)
-  role     = "member"
-  count    = length(local.website)
+  dynamic "members" {
+    for_each = local.bots
+    content {
+      username = members.value
+      role     = "maintainer"
+    }
+  }
 }

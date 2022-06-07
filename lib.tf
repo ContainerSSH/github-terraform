@@ -50,10 +50,8 @@ resource "github_branch_protection" "lib" {
       "go test",
     ]
   }
-}
-
-resource "github_team_repository" "lib" {
-  repository = github_repository.lib.id
-  team_id    = github_team.developers.id
-  permission = "push"
+  push_restrictions = [
+    github_team.chairs.node_id,
+    github_team.bots.node_id,
+  ]
 }

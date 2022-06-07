@@ -34,12 +34,6 @@ resource "github_repository" "images" {
   }
 }
 
-resource "github_team_repository" "images" {
-  repository = github_repository.images.id
-  team_id    = github_team.developers.id
-  permission = "push"
-}
-
 //noinspection MissingProperty
 resource "github_branch_protection" "images" {
   repository_id          = github_repository.images.node_id
@@ -54,6 +48,10 @@ resource "github_branch_protection" "images" {
     strict   = true
     contexts = []
   }
+  push_restrictions = [
+    github_team.chairs.node_id,
+    github_team.bots.node_id,
+  ]
 }
 
 resource "github_actions_secret" "images-docker-username" {

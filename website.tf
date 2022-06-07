@@ -54,16 +54,8 @@ resource "github_branch_protection" "website" {
     strict   = true
     contexts = []
   }
-}
-
-resource "github_team_repository" "website-devs" {
-  repository = github_repository.website.id
-  team_id    = github_team.developers.id
-  permission = "push"
-}
-
-resource "github_team_repository" "website" {
-  repository = github_repository.website.id
-  team_id    = github_team.website.id
-  permission = "push"
+  push_restrictions = [
+    github_team.chairs.node_id,
+    github_team.bots.node_id,
+  ]
 }

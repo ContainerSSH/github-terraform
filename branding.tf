@@ -32,18 +32,6 @@ resource "github_repository" "branding" {
   }
 }
 
-resource "github_team_repository" "branding-devs" {
-  repository = github_repository.branding.id
-  team_id    = github_team.developers.id
-  permission = "push"
-}
-
-resource "github_team_repository" "branding" {
-  repository = github_repository.branding.id
-  team_id    = github_team.website.id
-  permission = "push"
-}
-
 //noinspection MissingProperty
 resource "github_branch_protection" "branding" {
   repository_id          = github_repository.branding.node_id
@@ -54,4 +42,8 @@ resource "github_branch_protection" "branding" {
     dismiss_stale_reviews           = true
     required_approving_review_count = 1
   }
+  push_restrictions = [
+    github_team.chairs.node_id,
+    github_team.bots.node_id,
+  ]
 }

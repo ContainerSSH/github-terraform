@@ -56,12 +56,10 @@ resource "github_branch_protection" "packages" {
     strict   = true
     contexts = []
   }
-}
-
-resource "github_team_repository" "packages" {
-  repository = github_repository.packages.id
-  team_id    = github_team.developers.id
-  permission = "push"
+  push_restrictions = [
+    github_team.chairs.node_id,
+    github_team.bots.node_id,
+  ]
 }
 
 resource "github_actions_secret" "packages" {

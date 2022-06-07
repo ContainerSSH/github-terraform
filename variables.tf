@@ -27,38 +27,32 @@ variable "gpg_code_signing_key" {
 }
 
 locals {
-  # The following users are core developers.
-  members = [
+  # ContainerSSH project chairs
+  chairs = [
     "sanjacodes",
     "janosdebugs",
     "bencurio",
-    "containersshbuilder",
-    "tsipinakis"
+    "tsipinakis",
   ]
-  # The following users have admin permissions.
-  admins = [
-    "sanjacodes",
-    "janosdebugs",
-    "bencurio",
+  # The following people are the members, but not chairs of the working group
+  members = []
+  # These are the working group members
+  workinggroup = concat(local.members, local.chairs)
+  # These are the machine users
+  bots = [
     # containersshbuilder is a machine user used to execute Terraform code. This allows programmatic creation of
     # repositories and automated permission management.
     "containersshbuilder"
   ]
-  # The following users should be assigned to support requests.
-  support = [
-    "janosdebugs"
-  ]
-  # The following users should have push permissions to all repositories.
-  developers = [
+  # The admins list is maintained separately because it isn't treated as a set, rather as a list.
+  admins = [
+    "sanjacodes",
     "janosdebugs",
     "bencurio",
-    "tsipinakis"
+    "containersshbuilder",
+    "tsipinakis",
   ]
-  # The following users should be able to edit the website.
-  website = [
-    "janosdebugs",
-    "bencurio"
-  ]
+
   libraries = {
     "service" : "Service layer for ContainerSSH",
     "geoip" : "The GeoIP lookup library for ContainerSSH",

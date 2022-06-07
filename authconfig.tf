@@ -37,12 +37,6 @@ resource "github_repository" "authconfig" {
   }
 }
 
-resource "github_team_repository" "authconfig" {
-  repository = github_repository.authconfig.id
-  team_id    = github_team.developers.id
-  permission = "push"
-}
-
 //noinspection MissingProperty
 resource "github_branch_protection" "authconfig" {
   repository_id          = github_repository.authconfig.node_id
@@ -61,4 +55,8 @@ resource "github_branch_protection" "authconfig" {
       "Run tests",
     ]
   }
+  push_restrictions = [
+    github_team.chairs.node_id,
+    github_team.bots.node_id,
+  ]
 }
