@@ -11,7 +11,7 @@ resource "github_membership" "members" {
 }
 
 resource "github_team" "bots" {
-  name        = "chairs"
+  name        = "bots"
   description = "The ContainerSSH bots"
   privacy     = "secret"
 }
