@@ -35,16 +35,20 @@ resource "github_repository" "community" {
 resource "github_branch_protection" "community" {
   repository_id          = github_repository.community.node_id
   pattern                = "main"
-  enforce_admins         = false
+  enforce_admins         = true
   require_signed_commits = false
   required_pull_request_reviews {
     dismiss_stale_reviews           = true
-    required_approving_review_count = 1
+    required_approving_review_count = 2
   }
   required_status_checks {
     strict   = true
     contexts = []
   }
+  push_restrictions = [
+    github_team.chairs.node_id,
+    github_team.bots.node_id,
+  ]
 }
 
 resource "github_repository" "github" {
@@ -94,4 +98,8 @@ resource "github_branch_protection" "github" {
     strict   = true
     contexts = []
   }
+  push_restrictions = [
+    github_team.chairs.node_id,
+    github_team.bots.node_id,
+  ]
 }

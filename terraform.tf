@@ -47,10 +47,8 @@ resource "github_branch_protection" "tf" {
       "Terraform Cloud/ContainerSSH/github-terraform",
     ]
   }
-}
-
-resource "github_team_repository" "tf" {
-  repository = github_repository.tf.id
-  team_id    = github_team.developers.id
-  permission = "push"
+  push_restrictions = [
+    github_team.chairs.node_id,
+    github_team.bots.node_id,
+  ]
 }

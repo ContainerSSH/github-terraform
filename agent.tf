@@ -34,12 +34,6 @@ resource "github_repository" "agent" {
   }
 }
 
-resource "github_team_repository" "agent" {
-  repository = github_repository.agent.id
-  team_id    = github_team.developers.id
-  permission = "push"
-}
-
 //noinspection MissingProperty
 resource "github_branch_protection" "agent" {
   repository_id          = github_repository.agent.node_id
@@ -58,6 +52,10 @@ resource "github_branch_protection" "agent" {
       "Release",
     ]
   }
+  push_restrictions = [
+    github_team.chairs.node_id,
+    github_team.bots.node_id,
+  ]
 }
 
 resource "github_actions_secret" "agent" {

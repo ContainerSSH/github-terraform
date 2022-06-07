@@ -29,12 +29,6 @@ resource "github_repository" "examples" {
   }
 }
 
-resource "github_team_repository" "examples" {
-  repository = github_repository.examples.id
-  team_id    = github_team.developers.id
-  permission = "push"
-}
-
 //noinspection MissingProperty
 resource "github_branch_protection" "examples" {
   repository_id          = github_repository.examples.node_id
@@ -45,4 +39,8 @@ resource "github_branch_protection" "examples" {
     dismiss_stale_reviews           = true
     required_approving_review_count = 1
   }
+  push_restrictions = [
+    github_team.chairs.node_id,
+    github_team.bots.node_id,
+  ]
 }

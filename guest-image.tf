@@ -34,12 +34,6 @@ resource "github_repository" "guest-image" {
   }
 }
 
-resource "github_team_repository" "guest-image" {
-  repository = github_repository.guest-image.id
-  team_id    = github_team.developers.id
-  permission = "push"
-}
-
 //noinspection MissingProperty
 resource "github_branch_protection" "guest-image" {
   repository_id          = github_repository.guest-image.node_id
@@ -56,6 +50,10 @@ resource "github_branch_protection" "guest-image" {
       "Build",
     ]
   }
+  push_restrictions = [
+    github_team.chairs.node_id,
+    github_team.bots.node_id,
+  ]
 }
 
 resource "github_actions_secret" "guest-image-docker-username" {
