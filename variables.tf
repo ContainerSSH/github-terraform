@@ -88,5 +88,27 @@ locals {
   archived = [
     "kuberun",
     "dockerrun",
+    "service",
+    "geoip",
+    "docker",
+    "kubernetes",
+    "backend",
+    "metrics",
+    "metricsintegration",
+    "configuration",
+    "http",
+    "auth",
+    "authintegration",
+    "sshserver",
+    "security",
+    "auditlogintegration",
+    "log",
+    "auditlog",
+    "structutils",
+    "unixutils",
+    "sshproxy",
+    "client-testbed",
+    "health",
+    "test"
   ]
 }
