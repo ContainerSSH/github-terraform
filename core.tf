@@ -53,8 +53,6 @@ resource "github_branch_protection" "core" {
   required_status_checks {
     strict = true
     contexts = [
-      "CodeQL",
-      "Run lint",
       "Build",
     ]
   }
