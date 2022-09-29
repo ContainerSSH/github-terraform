@@ -34,9 +34,9 @@ locals {
     "bencurio",
     "tsipinakis",
   ]
-  # The following people are the members, but not chairs of the working group
+  # The following people are members, but not chairs of the working group
   members = [
-    # LF members, not actually part of ther working group
+    # LF members, not actually part of the working group
     "thelinuxfoundation",
     "caniszczyk",
   ]
