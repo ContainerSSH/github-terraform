@@ -35,7 +35,11 @@ locals {
     "tsipinakis",
   ]
   # The following people are the members, but not chairs of the working group
-  members = []
+  members = [
+    # LF members, not actually part of ther working group
+    "thelinuxfoundation",
+    "caniszczyk",
+  ]
   # These are the working group members
   workinggroup = concat(local.members, local.chairs)
   # These are the machine users
@@ -51,6 +55,8 @@ locals {
     "bencurio",
     "containersshbuilder",
     "tsipinakis",
+    "thelinuxfoundation",
+    "caniszczyk",
   ]
 
   libraries = {
