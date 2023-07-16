@@ -29,7 +29,6 @@ variable "gpg_code_signing_key" {
 locals {
   # ContainerSSH project chairs
   chairs = [
-    "sanjacodes",
     "janosdebugs",
     "bencurio",
     "tsipinakis",
@@ -50,7 +49,6 @@ locals {
   ]
   # The admins list is maintained separately because it isn't treated as a set, rather as a list.
   admins = [
-    "sanjacodes",
     "janosdebugs",
     "bencurio",
     "containersshbuilder",
